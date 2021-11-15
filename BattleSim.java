@@ -54,15 +54,15 @@ public class BattleSim
         int oneIndex=0;
         int twoIndex=0;
         int turn=0;
-        while(oneIndex<armyOne.size()-1&&twoIndex<armyTwo.size()-1){
+        while(oneIndex<armyOne.size()&&twoIndex<armyTwo.size()){
             while(armyOne.unit(oneIndex).isAlive()&&armyTwo.unit(twoIndex).isAlive()){
                 System.out.println();
-                System.out.println("TURN "+turn+1); 
+                System.out.println("TURN "+(turn+1)); 
                 System.out.println();
-                System.out.println("Army One, Unit "+oneIndex+1);
+                System.out.println("Army One, Unit "+(oneIndex+1));
                 armyOne.unit(oneIndex).printStats();
                 System.out.println();
-                System.out.println("Army Two, Unit "+twoIndex+1);
+                System.out.println("Army Two, Unit "+(twoIndex+1));
                 armyTwo.unit(twoIndex).printStats();
                 
                 
@@ -79,7 +79,7 @@ public class BattleSim
             }
         }
         System.out.println();
-        if(oneIndex==armyOne.size()-1&&twoIndex==armyTwo.size()-1){
+        if(oneIndex==armyOne.size()&&twoIndex==armyTwo.size()){
                 System.out.println("Tie!");
             }
             else if(oneIndex==armyOne.size()-1){
