@@ -25,7 +25,7 @@ public abstract class Demon extends Creature
      */
     public int attack(){
         if(Randomizer.nextInt(20)==1){
-            System.out.println("Damage +50!");
+            //System.out.println("Damage +50!");
             return super.attack()+50;
         }
         return super.attack();

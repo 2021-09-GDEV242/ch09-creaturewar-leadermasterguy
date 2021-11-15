@@ -7,19 +7,19 @@
  */
 public class BattleSim
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private Army armyOne;
+    private Army armyTwo;
 
     /**
      * Default constructor for objects of class BattleSim
-     * utilizes premade default armies, rather than using custom ones
+     * uses presets to build one good army and one evil army to use, rather than any custom built ones
      */
     public BattleSim()
     {
-        // initialise instance variables
-        x = 0;
+        armyOne = new Army(0);
+        armyTwo = new Army(1);
     }
-    
+
     /**
      * Constructor for objects of class BattleSim, given
      * @param A the first army in the simulator
@@ -27,8 +27,36 @@ public class BattleSim
      */
     public BattleSim(Army A, Army B)
     {
-        // initialise instance variables
-        x = 0;
+        armyOne=A;
+        armyTwo=B;
     }
-    
+
+    /**
+     * Runs the battle simulation, using the provided armies
+     */
+    public void runSimulation() {
+        int oneIndex=0;
+        int twoIndex=0;
+        while(oneIndex<armyOne.size()-1&&twoIndex<armyTwo.size()-1){
+            while(armyOne.unit(oneIndex).isAlive()&&armyTwo.unit(twoIndex).isAlive()){
+                armyOne.unit(oneIndex).takeDamage(armyTwo.unit(twoIndex).attack());
+                armyTwo.unit(twoIndex).takeDamage(armyOne.unit(oneIndex).attack());
+            }
+            if(armyOne.unit(oneIndex).isKnockedOut()){
+                oneIndex++;
+            }
+            if(armyTwo.unit(twoIndex).isKnockedOut()){
+                twoIndex++;
+            }
+        }
+        if(oneIndex==armyOne.size()-1&&twoIndex==armyTwo.size()-1){
+                System.out.println("Tie!");
+            }
+            else if(oneIndex==armyOne.size()-1){
+                System.out.println("Army Two Wins!");
+            }
+            else{
+                System.out.println("Army One Wins!");
+            }
+    }
 }

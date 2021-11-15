@@ -124,4 +124,28 @@ public class Army
             i++;
         }
     }
-}
+    
+    /**
+     * returns creatures ArrayList
+     * @return creatures ArrayList of creatures in the Army
+     */
+    public ArrayList getCreatures(){
+        return creatures;
+    }
+    
+    /**
+     * returns a creature in the Army, given its index
+     * @return a particular Creature object in the creatures ArrayList
+     */
+    public Creature unit(int n){
+        return creatures.get(n);
+    }
+    
+    /**
+     * returns the size of the Army
+     * @return size of creatures ArrayList
+     */
+    public int size(){
+        return creatures.size();
+    }
+    }
