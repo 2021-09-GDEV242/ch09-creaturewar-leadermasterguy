@@ -30,17 +30,46 @@ public class BattleSim
         armyOne=A;
         armyTwo=B;
     }
+    
+    /**
+     * Constructor for objects of class BattleSim
+     * allows user to choose army presets
+     * 0 = good army
+     * 1 = evil army
+     * 2 = small test army
+     * others = empty army
+     * @param A the first army preset used in the simulator
+     * @param B the second army preset used in the simulator
+     */
+    public BattleSim(int A, int B)
+    {
+        armyOne=new Army(A);
+        armyTwo=new Army(B);
+    }
 
     /**
-     * Runs the battle simulation, using the provided armies
+     * Runs the battle simulation, using the provided armies, and prints out which army won
      */
     public void runSimulation() {
         int oneIndex=0;
         int twoIndex=0;
+        int turn=0;
         while(oneIndex<armyOne.size()-1&&twoIndex<armyTwo.size()-1){
             while(armyOne.unit(oneIndex).isAlive()&&armyTwo.unit(twoIndex).isAlive()){
+                System.out.println();
+                System.out.println("TURN "+turn+1); 
+                System.out.println();
+                System.out.println("Army One, Unit "+oneIndex+1);
+                armyOne.unit(oneIndex).printStats();
+                System.out.println();
+                System.out.println("Army Two, Unit "+twoIndex+1);
+                armyTwo.unit(twoIndex).printStats();
+                
+                
+                
                 armyOne.unit(oneIndex).takeDamage(armyTwo.unit(twoIndex).attack());
                 armyTwo.unit(twoIndex).takeDamage(armyOne.unit(oneIndex).attack());
+                turn++;
             }
             if(armyOne.unit(oneIndex).isKnockedOut()){
                 oneIndex++;
@@ -49,6 +78,7 @@ public class BattleSim
                 twoIndex++;
             }
         }
+        System.out.println();
         if(oneIndex==armyOne.size()-1&&twoIndex==armyTwo.size()-1){
                 System.out.println("Tie!");
             }
@@ -57,6 +87,14 @@ public class BattleSim
             }
             else{
                 System.out.println("Army One Wins!");
-            }
+            }    
     }
+    /**
+     * resets each of the armies to default, allowing for another simulation to take place
+     */
+    public void resetArmies(){
+        armyOne = new Army(0);
+        armyTwo = new Army(1);
+    }
+    
 }

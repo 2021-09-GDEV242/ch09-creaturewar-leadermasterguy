@@ -27,6 +27,7 @@ public class Army
      * given an integer, will fill the Army with a preset
      * 0 = good army
      * 1 = evil army
+     * 2 = small test army
      * others = empty army
      * @param premade determines which premade army will be used
      */
@@ -38,6 +39,9 @@ public class Army
         }
         if(premade==1){
             setEvilArmy();
+        }
+        if(premade==2){
+            setTestArmy();
         }
     }
 
@@ -123,6 +127,21 @@ public class Army
             }
             i++;
         }
+    }
+    
+    /**
+     * Sets the army object to a group of five randomly generated humans
+     * for testing
+     */
+    public void setTestArmy()
+    {
+        creatures.clear();
+        int i=0;
+        while (i<5){
+                addCreature(1,"human");
+                i++;
+            }
+
     }
     
     /**
