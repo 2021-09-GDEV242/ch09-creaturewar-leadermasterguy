@@ -54,8 +54,10 @@ public class BattleSim
         int oneIndex=0;
         int twoIndex=0;
         int turn=0;
+        boolean condition=true;
         while(oneIndex<armyOne.size()&&twoIndex<armyTwo.size()){
-            while(armyOne.unit(oneIndex).isAlive()&&armyTwo.unit(twoIndex).isAlive()){
+            condition=true;
+            while(condition==true){
                 System.out.println();
                 System.out.println("TURN "+(turn+1)); 
                 System.out.println();
@@ -65,10 +67,11 @@ public class BattleSim
                 System.out.println("Army Two, Unit "+(twoIndex+1));
                 armyTwo.unit(twoIndex).printStats();
                 
-                
-                
                 armyOne.unit(oneIndex).takeDamage(armyTwo.unit(twoIndex).attack());
                 armyTwo.unit(twoIndex).takeDamage(armyOne.unit(oneIndex).attack());
+                if(armyOne.unit(oneIndex).isKnockedOut()||armyTwo.unit(twoIndex).isKnockedOut()){
+                    condition=false;
+                }
                 turn++;
             }
             if(armyOne.unit(oneIndex).isKnockedOut()){
@@ -82,7 +85,7 @@ public class BattleSim
         if(oneIndex==armyOne.size()&&twoIndex==armyTwo.size()){
                 System.out.println("Tie!");
             }
-            else if(oneIndex==armyOne.size()-1){
+            else if(oneIndex==armyOne.size()){
                 System.out.println("Army Two Wins!");
             }
             else{
@@ -99,8 +102,8 @@ public class BattleSim
      * @param B the second army preset used in the simulator
      */
     public void resetArmies(int A, int B){
-        armyOne = new Army(0);
-        armyTwo = new Army(1);
+        armyOne = new Army(A);
+        armyTwo = new Army(B);
     }
     
 }
