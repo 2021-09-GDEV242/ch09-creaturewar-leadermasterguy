@@ -8,7 +8,7 @@
 //I believe it would be correct to make this class abstract, because it shouldn't be instantiated directly??
 //please correct me if I'm wrong in this assumption
 public abstract class Demon extends Creature
-{
+{ 
     /**
      * Constructor for objects of class Demon
      * Adds an aditional effect to the attack method for all subclasses
