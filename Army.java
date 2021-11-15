@@ -3,7 +3,7 @@ import java.util.Arrays;
 /**
  * The Army class constructs and contains an ArrayList of creatures
  * meant to represent an army that can be used in BattleSim
- * can be created empty, or with premade values, depending on parameters
+ * can be created empty, or with a preset, depending on parameters
  * 
  * @author Nicholas Trilone
  * @version 11/15/21
@@ -24,7 +24,7 @@ public class Army
 
     /**
      * Constructor for objects of class Army
-     * given an integer, will fill the Army with preset creatures
+     * given an integer, will fill the Army with a preset
      * 0 = good army
      * 1 = evil army
      * others = empty army
@@ -34,10 +34,10 @@ public class Army
     {
         creatures = new ArrayList();
         if(premade==0){
-
+            setGoodArmy();
         }
         if(premade==1){
-
+            setEvilArmy();
         }
     }
 
@@ -83,18 +83,45 @@ public class Army
     }
 
     /**
-     * Sets the army object to equal a premade good army
+     * Sets the army object to equal a randomly constructed good army
      */
     public void setGoodArmy()
     {
-
+        creatures.clear();
+        int i=0;
+        int r=0;
+        while (i<100){
+            r=Randomizer.nextInt(10);
+            if(r<7){
+                addCreature(1,"human");
+            }
+            else{
+               addCreature(1,"elf"); 
+            }
+            i++;
+        }
     }
 
     /**
-     * Constructor for objects of class Army
+     * Sets the army object to equal a randomly constructed evil army
      */
     public void setEvilArmy()
     {
-
+        creatures.clear();
+        int i=0;
+        int r=0;
+        while (i<50){
+            r=Randomizer.nextInt(25);
+            if(r==25){
+                addCreature(1,"balrog");
+            }
+            else if(r>18){
+                addCreature(1,"cyber");
+            }
+            else{
+                addCreature(1,"human");
+            }
+            i++;
+        }
     }
 }
