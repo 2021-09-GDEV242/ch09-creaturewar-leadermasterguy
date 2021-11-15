@@ -90,9 +90,15 @@ public class BattleSim
             }    
     }
     /**
-     * resets each of the armies to default, allowing for another simulation to take place
+     * resets each of the armies to a preset, allowing for another simulation to take place
+     * 0 = good army
+     * 1 = evil army
+     * 2 = small test army
+     * others = empty army
+     * @param A the first army preset used in the simulator
+     * @param B the second army preset used in the simulator
      */
-    public void resetArmies(){
+    public void resetArmies(int A, int B){
         armyOne = new Army(0);
         armyTwo = new Army(1);
     }
