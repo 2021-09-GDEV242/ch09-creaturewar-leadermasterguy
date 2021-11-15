@@ -13,9 +13,9 @@
 // we will learn what the abstract keyword does in a later chapter
 public abstract class Creature
 {
-    private int str;        // The strength of this creature
     private int max_hp;     // The maximum hit points the creature can have (used if healing enabled)
     private int hp;         // the current numberof hit points the creature has
+    private int str;        // The strength of this creature
 
     /**
      * default constructor - this should never actually run.
@@ -23,8 +23,8 @@ public abstract class Creature
      * strength for the subclass
      */
     public Creature (){
-        str=10;
         hp=10;
+        str=10;
         max_hp = hp;
     }
 
@@ -36,9 +36,9 @@ public abstract class Creature
      * @param str the strength of the creature, used to calculate damage
      * @param hp the health of the creature at the start of the simulation, and the current health levels during battle
      */
-    public Creature (int strength, int health) {
-        str=strength;
+    public Creature (int health, int strength) {
         hp=health;
+        str=strength;
         max_hp=hp;
     }
 
@@ -87,5 +87,24 @@ public abstract class Creature
      */
     public int getHealth() {
         return hp;
+    }
+    
+    /**
+     * Prints out the health and strength of a creature, used for testing
+     */
+    public void printStats(){
+        System.out.println("Strength: "+str);
+        System.out.println("Hp: "+hp+"/"+max_hp);
+    }
+    
+    /**
+     * Prints out theoretical attack values 50 times, used for testing
+     */
+    public void printAttack(){
+        int i=0;
+        while(i<50){
+            System.out.println("Damage Dealt: "+attack());
+            i++;
+        }
     }
 }

@@ -1,7 +1,7 @@
 /**
  * The CyberDemon class implements a wrapper for the Demon class with the following additions
- * Implements a maximum/minimum strength for the creature type [18/5]
- * Implements a maximum/minimum hitpoint total for the creature type [30/10]
+ * Implements a maximum/minimum strength for the creature type [40/20]
+ * Implements a maximum/minimum hitpoint total for the creature type [100/25]
  * 
  * @author Nicholas Trilone
  * @version 11/15/21
@@ -9,10 +9,10 @@
 public class CyberDemon extends Demon
 {
     // instance variables
-    private static final int MAX_CDEMON_STR = 18;
-    private static final int MAX_CDEMON_HP = 30;
-    private static final int MIN_CDEMON_STR = 5;
-    private static final int MIN_CDEMON_HP = 10;
+    private static final int MAX_CDEMON_STR = 40;
+    private static final int MAX_CDEMON_HP = 100;
+    private static final int MIN_CDEMON_STR = 20;
+    private static final int MIN_CDEMON_HP = 25;
 
     /**
      * Constructor for objects of class CyberDemon -

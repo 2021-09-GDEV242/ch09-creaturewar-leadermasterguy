@@ -5,18 +5,17 @@
  * @author Nicholas Trilone
  * @version 11/15/21
  */
-public class Demon extends Creature
+//I believe it would be correct to make this class abstract, because it shouldn't be instantiated directly??
+//please correct me if I'm wrong in this assumption
+public abstract class Demon extends Creature
 {
-    private int str;
-    
     /**
      * Constructor for objects of class Demon
      * Adds an aditional effect to the attack method for all subclasses
      */
-    public Demon(int strength, int health)
+    public Demon(int health, int strength)
     {
         super(health,strength);
-        str=strength;
     }
 
     /**
@@ -26,8 +25,20 @@ public class Demon extends Creature
      */
     public int attack(){
         if(Randomizer.nextInt(20)==1){
-            return Randomizer.nextInt(str)+50;
+            System.out.println("Damage +50!");
+            return super.attack()+50;
         }
-        return Randomizer.nextInt(str);
+        return super.attack();
+    }
+    
+    /**
+     * Prints out theoretical attack values 50 times, used for testing
+     */
+    public void printAttack(){
+        int i=0;
+        while(i<50){
+            System.out.println("Damage Dealt: "+attack());
+            i++;
+        }
     }
 }
