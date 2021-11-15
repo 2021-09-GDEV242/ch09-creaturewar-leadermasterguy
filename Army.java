@@ -19,8 +19,9 @@ public class Army
      */
     public Army()
     {
+         creatures = new ArrayList();
     }
-    
+
     /**
      * Constructor for objects of class Army
      * given an integer, will fill the Army with preset creatures
@@ -31,14 +32,15 @@ public class Army
      */
     public Army(int premade)
     {
+        creatures = new ArrayList();
         if(premade==0){
-            
+
         }
         if(premade==1){
-            
+
         }
     }
-    
+
     /**
      * Adds a number of a certain kind of creature to the army
      * @param number number of creatures added
@@ -46,9 +48,32 @@ public class Army
      */
     public void addCreature(int number,String type)
     {
-        
+        for(int i=0;i<number;i++)
+        {
+            if(type=="human"){
+                Human human = new Human();
+                creatures.add(human);
+            }       
+            if(type=="elf"){
+                Elf elf = new Elf();
+                creatures.add(elf);
+            }  
+            if(type=="cyber"){
+                CyberDemon cyber = new CyberDemon();
+                creatures.add(cyber);
+            }  
+            if(type=="balrog"){
+                Balrog balrog = new Balrog();
+                creatures.add(balrog);
+            }  
+        }
     }
     
+    public void printArmy()
+    {
+        System.out.println(creatures);
+    }
+
     /**
      * Empties the army of all creatures
      */
@@ -56,20 +81,20 @@ public class Army
     {
         creatures.clear();
     }
-    
+
     /**
      * Sets the army object to equal a premade good army
      */
     public void setGoodArmy()
     {
-        
+
     }
-    
+
     /**
      * Constructor for objects of class Army
      */
     public void setEvilArmy()
     {
-        
+
     }
 }
