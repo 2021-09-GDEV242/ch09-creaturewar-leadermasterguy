@@ -37,7 +37,6 @@ public abstract class Creature
      * @param hp the health of the creature at the start of the simulation, and the current health levels during battle
      */
     public Creature (int strength, int health) {
-        System.out.println("hi");
         str=strength;
         hp=health;
         max_hp=hp;
